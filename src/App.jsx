@@ -15,7 +15,7 @@ import './App.css'
 const App = () => {
   return (
     <div className="app">
-      <div className="Navbar">
+      <div className="navbar">
         <Navbar />
       </div>
       <div className="main">
@@ -44,6 +44,7 @@ const App = () => {
       </div>
 
     </div>
+  
   </div>
   )
 }
