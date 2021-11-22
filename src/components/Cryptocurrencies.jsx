@@ -7,6 +7,7 @@ import {Card, Row, Col, Input, Typography} from 'antd'
 import {useGetCryptosQuery} from '../services/CryptoAPI'
 
 const Cryptocurrencies = ({simplified}) => {
+
   const count = simplified ? 10 : 100;
   const {data, isFetching} = useGetCryptosQuery(count);
   const cryptoList = data?.data?.coins;
@@ -31,24 +32,40 @@ const Cryptocurrencies = ({simplified}) => {
   if(! cryptos)
     return (
       <>
-      <Typography.Title level={2} className="heading">
-        Crypto Currencies
-      </Typography.Title>
-      <p>Loading...!!</p>
+
+      {
+        simplified ?
+
+        <p>Loading...!!</p>
+        :
+        <>
+          <Typography.Title level={2} className="heading">
+          Crypto Currencies
+          </Typography.Title>
+          <p>Loading...!!</p>
+        </>
+      }
       </>
     );
   
   return (
     <>
-    <Typography.Title level={2} className="heading">
-        Crypto Currencies
-    </Typography.Title>
 
-    <div className="search-crypto">
-      <Input placeholder="Search Crypto Currency" onChange={(e) => setSearch(e.target.value)} />
-    </div>
+    {
+       ! simplified && (
+        <>
+        <Typography.Title level={2} className="heading">
+            Crypto Currencies
+        </Typography.Title>
 
-    <Row gutter={[32,32]} className="crypto-card-container">
+        <div className="search-crypto">
+          <Input placeholder="Search Crypto Currency" onChange={(e) => setSearch(e.target.value)} />
+        </div>
+        </>
+      )
+    }
+
+      <Row gutter={[32,32]} className="crypto-card-container">
       {cryptos?.map((currency) => (
         <Col xs={24} sm={12} lg={6} className="crypto-card" key={currency.id}>
           <Link to={`/crypto/${currency.id}`}>
@@ -60,11 +77,13 @@ const Cryptocurrencies = ({simplified}) => {
                 <p>Price: ${millify(currency.price)}</p>
                 <p>Market Cap: ${millify(currency.marketCap)}</p>
                 <p>Daily Change: ${millify(currency.change)}%</p>
-            </Card>
-          </Link>
-        </Col>
-      ))}
-    </Row>
+              </Card>
+            </Link>
+          </Col>
+        ))}
+      </Row>
+
+
     </>
   )
 }
