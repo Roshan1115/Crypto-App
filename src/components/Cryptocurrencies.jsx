@@ -3,7 +3,7 @@ import millify from 'millify'
 import {Link} from 'react-router-dom'
 import {Card, Row, Col, Input, Typography} from 'antd'
 
-
+import Loader from './Loader'
 import {useGetCryptosQuery} from '../services/CryptoAPI'
 
 const Cryptocurrencies = ({simplified}) => {
@@ -36,13 +36,13 @@ const Cryptocurrencies = ({simplified}) => {
       {
         simplified ?
 
-        <p>Loading...!!</p>
+         <Loader />
         :
         <>
           <Typography.Title level={2} className="heading">
           Crypto Currencies
           </Typography.Title>
-          <p>Loading...!!</p>
+           <Loader />
         </>
       }
       </>

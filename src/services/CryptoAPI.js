@@ -7,7 +7,7 @@ const CryptoApiHeaders = {
 
 const BaseURL = 'https://coinranking1.p.rapidapi.com';
 
-const createReques = (url) => ({
+const createRequest = (url) => ({
   url,    // url : url
   headers: CryptoApiHeaders
 });
@@ -17,12 +17,20 @@ export const CryptoAPI = createApi({
   baseQuery: fetchBaseQuery({baseUrl: BaseURL}),
   endpoints: (builder) => ({
     getCryptos: builder.query({
-      query: (count) => createReques(`/coins?limit=${count}`)
-    })
+      query: (count) => createRequest(`/coins?limit=${count}`)
+    }),
+    getDetails: builder.query({
+      query: (coinId) => createRequest(`/coin/${coinId}`),
+    }),
+    getHistory: builder.query({
+      query: ({coinId, timePeriod}) => createRequest(`/coin/${coinId}/history/${timePeriod}`),
+    }),
   })
 })
 
 
 export const {
   useGetCryptosQuery,   // redux created hook for me
+  useGetDetailsQuery,
+  useGetHistoryQuery,
 } = CryptoAPI;

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Select, Row, Typography, Col, Avatar, Card} from 'antd'
 import moment from 'moment'
+import Loader from './Loader';
 
 import { useGetNewsQuery } from '../services/NewsAPI';
+import { useGetCryptosQuery } from '../services/CryptoAPI'
 
 const {Text, Title} = Typography;
 const {Option} = Select;
@@ -10,8 +12,10 @@ const staticImage = 'https://www.bing.com/th?id=OVFT.mpzuVZnv8dwIMRfQGPbOPC&pid=
 
 const News = ({simplified}) => {
 
+  const [newsCategory, setnewsCategory] = useState("Cryptocurrency")
   const count = simplified ? 6 : 12;
-  const { data: cryptoNews } = useGetNewsQuery({category: 'Cryptocurrency', count: count})
+  const { data: cryptoNews } = useGetNewsQuery({category: newsCategory, count: count})
+  const { data } = useGetCryptosQuery(100)
 
   console.log("crypto news ", cryptoNews);
 
@@ -24,7 +28,7 @@ const News = ({simplified}) => {
         Cryptocurrencies News
         </Typography.Title>
       }
-      <p>Loading...!!</p>
+       <Loader />
     </>
     )
     
@@ -38,6 +42,26 @@ const News = ({simplified}) => {
     }
     
     <Row gutter={[24, 24]}>
+
+      { !simplified && (
+        <Col span={24}>
+          <Select
+          showSearch
+          className="search-news"
+          placeholder="Search For News"
+          optionFilterProp="children"
+          onChange={(val) => setnewsCategory(val)}
+          filterOption={(input,option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0 }
+          >
+            <Option value="Cryptocurrency">Cryptocurrency</Option>
+            {data?.data?.coins.map((coin) => (
+              <Option value={coin.name}>{coin.name}</Option>
+            ))}
+          </Select>
+        </Col>
+      )}
+
+
       {cryptoNews.value.map((news, index) => (
         <Col xs={24} sm={12} lg={8} key={index}>
           <Card hoverable className="news-card">
