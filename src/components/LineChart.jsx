@@ -6,7 +6,7 @@ const { Title } = Typography;
 
 const LineChart = ({coinHistory, currPrice, coinName}) => {
 
-  console.log("hostory", coinHistory);
+  // console.log("hostory", coinHistory);
 
   const coinPrice = [];
   const coinTimeStamp = [];
