@@ -22,11 +22,11 @@ const App = () => {
       <Layout>
           <div className="routes">
             <Routes>
-              <Route exact path="/" element={<Homepage />} />
-              <Route exact path="/exchanges" element={<Exchanges />} />
-              <Route exact path="/cryptocurrencies" element={<Cryptocurrencies />} />
-              <Route exact path="/crypto/:coinId" element={<CryptoDetails />} />
-              <Route exact path="/news" element={<News />} />
+              <Route exact path="/Crypto-App" element={<Homepage />} />
+              <Route exact path="/Crypto-App/exchanges" element={<Exchanges />} />
+              <Route exact path="/Crypto-App/cryptocurrencies" element={<Cryptocurrencies />} />
+              <Route exact path="/Crypto-App/crypto/:coinId" element={<CryptoDetails />} />
+              <Route exact path="/Crypto-App/news" element={<News />} />
             </Routes>
           </div>
         </Layout>
@@ -34,12 +34,12 @@ const App = () => {
       <div className="footer">
         <Typography.Title level={5} style={{color: 'white', textAlign: 'center'}}>
           Cryto App <br />
-          All rights reserved @ Roshan Bishi
+          Designed and developed in reference with JS-Mastery @ Roshan Bishi
         </Typography.Title>
         <Space>
-          <Link to="/">Home</Link>
-          <Link to="/exchanges">Exchanges</Link>
-          <Link to="/news">News</Link>
+          <Link to="/Crypto-App">Home</Link>
+          <Link to="/Crypto-App/exchanges">Exchanges</Link>
+          <Link to="/Crypto-App/news">News</Link>
         </Space>
       </div>
 

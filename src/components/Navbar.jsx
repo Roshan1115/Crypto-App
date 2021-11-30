@@ -6,8 +6,7 @@ import {
   MoneyCollectOutlined,
   BulbOutlined,
   FundOutlined,
-  MenuOutlined,
-  SecurityScanFilled
+  MenuOutlined
 } from '@ant-design/icons'
 import icon from '../image/doge.png'
 
@@ -42,7 +41,7 @@ const Navbar = () => {
       <div className="logo-container">
         <Avatar src={icon} size="large" />
         <Typography.Title level={2} className="logo">
-          <Link to="/">Crypto Home</Link>
+          <Link to="/Crypto-App">Crypto Home</Link>
         </Typography.Title>
         <Button className='menu-control-container' onClick={() => setActiveMenue(! activeMenue)}>
           <MenuOutlined/>
@@ -51,16 +50,16 @@ const Navbar = () => {
       { activeMenue && (
         <Menu theme="dark">
           <Menu.Item icon={<HomeOutlined/>}>
-            <Link to="/">Home</Link>
+            <Link to="/Crypto-App">Home</Link>
           </Menu.Item>
           <Menu.Item icon={<FundOutlined/>}>
-            <Link to="/cryptocurrencies">Crypto Currencies</Link>
+            <Link to="/Crypto-App/cryptocurrencies">Crypto Currencies</Link>
           </Menu.Item> 
           <Menu.Item icon={<MoneyCollectOutlined/>}>
-            <Link to="/exchanges">Exchanges</Link>
+            <Link to="/Crypto-App/exchanges">Exchanges</Link>
           </Menu.Item>
           <Menu.Item icon={<BulbOutlined/>}>
-            <Link to="/news">News</Link>
+            <Link to="/Crypto-App/news">News</Link>
           </Menu.Item>
         </Menu>
       )}

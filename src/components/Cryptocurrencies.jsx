@@ -9,7 +9,7 @@ import {useGetCryptosQuery} from '../services/CryptoAPI'
 const Cryptocurrencies = ({simplified}) => {
 
   const count = simplified ? 10 : 100;
-  const {data, isFetching} = useGetCryptosQuery(count);
+  const {data} = useGetCryptosQuery(count);
   const cryptoList = data?.data?.coins;
   const [cryptos, setCryptos] = useState()
   const [search, setSearch] = useState("");
@@ -71,7 +71,7 @@ const Cryptocurrencies = ({simplified}) => {
           <Link to={`/crypto/${currency.id}`}>
             <Card
               title={`${currency.rank}. ${currency.name}`}
-              extra={<img className="crypto-image" src={currency.iconUrl}/>}
+              extra={<img className="crypto-image" src={currency.iconUrl} alt={currency.name}/>}
               hoverable
               >
                 <p>Price: ${millify(currency.price)}</p>
