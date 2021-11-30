@@ -33,13 +33,13 @@ const Homepage = () => {
 
       <div className="home-heading-container">
         <Title level={2} className="home-title">Top 10 Crypto Currencies in the world</Title>
-        <Title level={3} className="show-more"><Link to="/cryptocurrencies">Show More</Link></Title>
+        <Title level={3} className="show-more"><Link to="/Crypto-App/cryptocurrencies">Show More</Link></Title>
       </div>
       <Cryptocurrencies simplified />
 
       <div className="home-heading-container">
         <Title level={2} className="home-title">Latest news about Crypto Currencies</Title>
-        <Title level={3} className="show-more"><Link to="/news">Show News</Link></Title>
+        <Title level={3} className="show-more"><Link to="/Crypto-App/news">Show News</Link></Title>
       </div>
       <News simplified />
     </>
