@@ -38,7 +38,7 @@ const App = () => {
         </Typography.Title>
         <Space>
           <Link to="/Crypto-App">Home</Link>
-          <Link to="/Crypto-App/exchanges">Exchanges</Link>
+          {/* <Link to="/Crypto-App/exchanges">Exchanges</Link> */}
           <Link to="/Crypto-App/news">News</Link>
         </Space>
       </div>

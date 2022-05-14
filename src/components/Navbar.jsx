@@ -55,9 +55,9 @@ const Navbar = () => {
           <Menu.Item icon={<FundOutlined/>}>
             <Link to="/Crypto-App/cryptocurrencies">Crypto Currencies</Link>
           </Menu.Item> 
-          <Menu.Item icon={<MoneyCollectOutlined/>}>
+          {/* <Menu.Item icon={<MoneyCollectOutlined/>}>
             <Link to="/Crypto-App/exchanges">Exchanges</Link>
-          </Menu.Item>
+          </Menu.Item> */}
           <Menu.Item icon={<BulbOutlined/>}>
             <Link to="/Crypto-App/news">News</Link>
           </Menu.Item>

@@ -8,11 +8,13 @@ import {useGetCryptosQuery} from '../services/CryptoAPI'
 
 const Cryptocurrencies = ({simplified}) => {
 
-  const count = simplified ? 10 : 100;
+  const count = simplified ? 10 : 99;
   const {data} = useGetCryptosQuery(count);
   const cryptoList = data?.data?.coins;
   const [cryptos, setCryptos] = useState()
   const [search, setSearch] = useState("");
+
+  // console.log(data);
 
 
   useEffect(() => {
@@ -47,6 +49,8 @@ const Cryptocurrencies = ({simplified}) => {
       }
       </>
     );
+
+    // console.log(cryptos);
   
   return (
     <>
@@ -68,7 +72,7 @@ const Cryptocurrencies = ({simplified}) => {
       <Row gutter={[32,32]} className="crypto-card-container">
       {cryptos?.map((currency) => (
         <Col xs={24} sm={12} lg={6} className="crypto-card" key={currency.id}>
-          <Link to={`/Crypto-App/crypto/${currency.id}`}>
+          <Link to={`/Crypto-App/crypto/${currency.uuid}`}>
             <Card
               title={`${currency.rank}. ${currency.name}`}
               extra={<img className="crypto-image" src={currency.iconUrl} alt={currency.name}/>}
